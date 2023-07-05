@@ -5,6 +5,7 @@ import java.util.*;
 public class NormalGameState {
 
     private final static HashMap<NormalGameState, Integer> statesCache = new HashMap<NormalGameState, Integer>();
+    private static int checkedMoves = 0;
 
     private List<Hand> hands;
     private int activePlayerIndex;
@@ -26,6 +27,14 @@ public class NormalGameState {
 
     // returns the maximum number of tricks won by declarer with a given trump suit
     public int numOfTricksWithTrump(Suit trumpSuit, int declarerIndex) {
+        this.checkedMoves = 0;
+        int abResult = activePlayerIndex == declarerIndex ? Integer.MAX_VALUE : 0;
+        int result = numOfTricksWithTrump(trumpSuit, declarerIndex, abResult);
+        System.out.println(checkedMoves);
+        return result;
+    }
+
+    public int numOfTricksWithTrump(Suit trumpSuit, int declarerIndex, int abResult) {
         if (hands.get(0).getCards().size() == 9) {
             System.out.println(this);
         }
@@ -34,6 +43,7 @@ public class NormalGameState {
         int trickResult = activePlayerIndex == declarerIndex ? 0 : Integer.MAX_VALUE;
 
         for (Card moveCard : getPossibleMoves(activePlayer, roundState, trumpSuit)) {
+            this.checkedMoves++;
             Hand newHand = activePlayer.removeCard(moveCard);
             RoundState newRoundState = roundState.addCard(moveCard);
 
@@ -68,15 +78,21 @@ public class NormalGameState {
                 if (statesCache.containsKey(newGameState)) {
                     stateTricks = statesCache.get(newGameState);
                 } else {
-                    stateTricks = newGameState.numOfTricksWithTrump(trumpSuit, declarerIndex);
+                    stateTricks = newGameState.numOfTricksWithTrump(trumpSuit, declarerIndex, trickResult);
                     statesCache.put(newGameState, stateTricks);
                 }
             } else {
-                stateTricks = newGameState.numOfTricksWithTrump(trumpSuit, declarerIndex);
+                stateTricks = newGameState.numOfTricksWithTrump(trumpSuit, declarerIndex, trickResult);
             }
 
             int tricks = stateTricks + roundTrick;
             trickResult = activePlayerIndex == declarerIndex ? Math.max(trickResult, tricks) : Math.min(trickResult, tricks);
+
+            if (activePlayerIndex == declarerIndex) {
+                if (abResult <= trickResult) {
+                    break;
+                }
+            }
         }
 
         return trickResult;
