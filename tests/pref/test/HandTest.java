@@ -1,7 +1,8 @@
 package pref.test;
 
-import junit.framework.Assert;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
+
 import pref.Hand;
 
 import java.util.Arrays;
@@ -14,7 +15,7 @@ import static pref.Value.*;
 public class HandTest {
     @Test
     public void equalsTestTrue() {
-        Assert.assertEquals(
+        Assertions.assertEquals(
                 new Hand(Arrays.asList(card(Spades, Seven), card(Hearts, Ace))),
                 new Hand(Arrays.asList(card(Spades, Seven), card(Hearts, Ace))));
     }
@@ -23,6 +24,6 @@ public class HandTest {
     public void equalsTest() {
         Hand hand1 = new Hand(Arrays.asList(card(Spades, Seven), card(Hearts, King)));
         Hand hand2 = new Hand(Arrays.asList(card(Spades, Seven), card(Hearts, Ace)));
-        Assert.assertTrue(!hand1.equals(hand2));
+        Assertions.assertEquals(hand1.equals(hand2), false);
     }
 }

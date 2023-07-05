@@ -1,8 +1,8 @@
 package pref.test;
 
-import org.junit.Assert;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 import pref.Card;
 import pref.Hand;
 import pref.NormalGameState;
@@ -19,7 +19,7 @@ import static pref.Card.card;
 public class NormalGameStateTest {
     private Hand hand;
 
-    @Before
+    @BeforeEach
     public void setUp() {
         hand = new Hand(Arrays.asList(
                 card(Spades, Ace),
@@ -47,7 +47,7 @@ public class NormalGameStateTest {
 
         List<Hand> hands = Arrays.asList(firstHand, secondHand, thirdHand);
         int tricks = new NormalGameState(hands, new RoundState(), 0).numOfTricksWithTrump(null, 0);
-        Assert.assertEquals(3, tricks);
+        Assertions.assertEquals(3, tricks);
     }
 
     @Test
@@ -66,8 +66,8 @@ public class NormalGameStateTest {
                 card(Diamonds, Queen)));
 
         List<Hand> hands = Arrays.asList(firstHand, secondHand, thirdHand);
-        Assert.assertEquals(2, new NormalGameState(hands, new RoundState(), 0).numOfTricksWithTrump(null, 0)); // First one goes first
-        Assert.assertEquals(0, new NormalGameState(hands, new RoundState(), 2).numOfTricksWithTrump(null, 0)); //
+        Assertions.assertEquals(2, new NormalGameState(hands, new RoundState(), 0).numOfTricksWithTrump(null, 0)); // First one goes first
+        Assertions.assertEquals(0, new NormalGameState(hands, new RoundState(), 2).numOfTricksWithTrump(null, 0)); //
     }
 
     @Test
@@ -81,7 +81,7 @@ public class NormalGameStateTest {
         Card[] expectedCards = hand.getCards().toArray(new Card[hand.getCards().size()]);
         Card[] actualCards = possibleMoves.toArray(new Card[possibleMoves.size()]);
 
-        Assert.assertArrayEquals(expectedCards, actualCards);
+        Assertions.assertArrayEquals(expectedCards, actualCards);
     }
 
     @Test
@@ -93,7 +93,7 @@ public class NormalGameStateTest {
         Card[] expectedCards = new Card[]{card(Clubs, King), card(Clubs, Queen)};
         Card[] actualCards = possibleMoves.toArray(new Card[possibleMoves.size()]);
 
-        Assert.assertArrayEquals(expectedCards, actualCards);
+        Assertions.assertArrayEquals(expectedCards, actualCards);
     }
 
     @Test
@@ -105,7 +105,7 @@ public class NormalGameStateTest {
         Card[] expectedCards = new Card[]{card(Spades, Ace), card(Spades, King), card(Spades, Seven)};
         Card[] actualCards = possibleMoves.toArray(new Card[possibleMoves.size()]);
 
-        Assert.assertArrayEquals(expectedCards, actualCards);
+        Assertions.assertArrayEquals(expectedCards, actualCards);
     }
 
     @Test
@@ -115,6 +115,6 @@ public class NormalGameStateTest {
         Card[] expectedCards = hand.getCards().toArray(new Card[hand.getCards().size()]);
         Card[] actualCards = possibleMoves.toArray(new Card[possibleMoves.size()]);
 
-        Assert.assertArrayEquals(expectedCards, actualCards);
+        Assertions.assertArrayEquals(expectedCards, actualCards);
     }
 }
