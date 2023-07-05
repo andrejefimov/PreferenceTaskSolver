@@ -46,6 +46,10 @@ public class Hand {
     }
 
     public Collection<Card> getSuitCards(Suit suit) {
+        if (suit == null) {
+            return new ArrayList<Card>();
+        }
+
         return suitCards.get(suit.getIndex());
     }
 
