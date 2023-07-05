@@ -1,7 +1,7 @@
 package pref.tasks;
 
-import org.junit.Assert;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 import pref.Hand;
 import pref.NormalGameState;
 import pref.RoundState;
@@ -54,6 +54,6 @@ public class RealTasks {
         List<Hand> hands = Arrays.asList(firstHand, secondHand, thirdHand);
         NormalGameState normalGameState = new NormalGameState(hands, new RoundState(), 2);
 
-        Assert.assertEquals(5, normalGameState.numOfTricksWithTrump(Clubs, 0));
+        Assertions.assertEquals(5, normalGameState.numOfTricksWithTrump(Clubs, 0));
     }
 }
