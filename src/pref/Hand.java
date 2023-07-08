@@ -1,5 +1,7 @@
 package pref;
 
+import org.jetbrains.annotations.Nullable;
+
 import java.util.*;
 
 public class Hand {
@@ -45,7 +47,7 @@ public class Hand {
         return cards;
     }
 
-    public Collection<Card> getSuitCards(Suit suit) {
+    public Collection<Card> getSuitCards(@Nullable Suit suit) {
         if (suit == null) {
             return new ArrayList<>();
         }

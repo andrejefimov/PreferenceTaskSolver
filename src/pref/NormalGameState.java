@@ -1,5 +1,7 @@
 package pref;
 
+import org.jetbrains.annotations.Nullable;
+
 import java.util.*;
 
 public class NormalGameState {
@@ -25,7 +27,7 @@ public class NormalGameState {
     }
 
     // returns the maximum number of tricks won by declarer with a given trump suit
-    public int numOfTricksWithTrump(Suit trumpSuit, int declarerIndex) {
+    public int numOfTricksWithTrump(@Nullable Suit trumpSuit, int declarerIndex) {
         if (hands.get(0).getCards().size() == 9) {
             System.out.println(this);
         }
@@ -90,7 +92,7 @@ public class NormalGameState {
         return (activePlayerIndex + 1 + winnerShift) % 3;
     }
 
-    public static Collection<Card> getPossibleMoves(Hand hand, RoundState roundState, Suit trump) {
+    public static Collection<Card> getPossibleMoves(Hand hand, RoundState roundState, @Nullable Suit trump) {
         if (!roundState.isEmpty()) {
             Suit moveSuit = roundState.firstMoveSuit();
 
