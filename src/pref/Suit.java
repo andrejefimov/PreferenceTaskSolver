@@ -6,7 +6,7 @@ public enum Suit {
     Diamonds(2),
     Hearts(3);
 
-    private int index;
+    private final int index;
 
     Suit(int index) {
         this.index = index;

@@ -3,14 +3,14 @@ package pref;
 import java.util.HashMap;
 
 public class Card {
-    private Suit suit;
-    private Value value;
+    private final Suit suit;
+    private final Value value;
 
-    private final static HashMap<Suit, HashMap<Value, Card>> deck = new HashMap<Suit, HashMap<Value, Card>>();
+    private final static HashMap<Suit, HashMap<Value, Card>> deck = new HashMap<>();
 
     static {
         for (Suit suit : Suit.values()) {
-            deck.put(suit, new HashMap<Value, Card>());
+            deck.put(suit, new HashMap<>());
             for (Value value : Value.values()) {
                 deck.get(suit).put(value, new Card(suit, value));
             }
@@ -36,8 +36,6 @@ public class Card {
 
     @Override
     public String toString() {
-        StringBuilder builder = new StringBuilder();
-        builder.append(value).append(suit);
-        return builder.toString();
+        return String.valueOf(value) + suit;
     }
 }

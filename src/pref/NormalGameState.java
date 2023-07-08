@@ -4,11 +4,11 @@ import java.util.*;
 
 public class NormalGameState {
 
-    private final static HashMap<NormalGameState, Integer> statesCache = new HashMap<NormalGameState, Integer>();
+    private final static HashMap<NormalGameState, Integer> statesCache = new HashMap<>();
 
-    private List<Hand> hands;
-    private int activePlayerIndex;
-    private RoundState roundState;
+    private final List<Hand> hands;
+    private final int activePlayerIndex;
+    private final RoundState roundState;
 
     public NormalGameState(List<Hand> hands, RoundState roundState, int activePlayerIndex) {
         if (hands.size() != 3) {
@@ -37,7 +37,7 @@ public class NormalGameState {
             Hand newHand = activePlayer.removeCard(moveCard);
             RoundState newRoundState = roundState.addCard(moveCard);
 
-            ArrayList<Hand> newHands = new ArrayList<Hand>(hands);
+            ArrayList<Hand> newHands = new ArrayList<>(hands);
             newHands.set(activePlayerIndex, newHand);
 
             NormalGameState newGameState;

@@ -10,7 +10,7 @@ public enum Value {
     King(6),
     Ace(7);
 
-    private int index;
+    private final int index;
 
     Value(int index) {
         this.index = index;
