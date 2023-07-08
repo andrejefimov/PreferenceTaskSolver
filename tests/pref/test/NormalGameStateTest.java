@@ -78,8 +78,8 @@ public class NormalGameStateTest {
 
         Collection<Card> possibleMoves = NormalGameState.getPossibleMoves(hand, roundState, Hearts);
 
-        Card[] expectedCards = hand.getCards().toArray(new Card[hand.getCards().size()]);
-        Card[] actualCards = possibleMoves.toArray(new Card[possibleMoves.size()]);
+        Card[] expectedCards = hand.getCards().toArray(new Card[0]);
+        Card[] actualCards = possibleMoves.toArray(new Card[0]);
 
         Assertions.assertArrayEquals(expectedCards, actualCards);
     }
@@ -91,7 +91,7 @@ public class NormalGameStateTest {
         Collection<Card> possibleMoves = NormalGameState.getPossibleMoves(hand, roundState, Clubs);
 
         Card[] expectedCards = new Card[]{card(Clubs, King), card(Clubs, Queen)};
-        Card[] actualCards = possibleMoves.toArray(new Card[possibleMoves.size()]);
+        Card[] actualCards = possibleMoves.toArray(new Card[0]);
 
         Assertions.assertArrayEquals(expectedCards, actualCards);
     }
@@ -103,7 +103,7 @@ public class NormalGameStateTest {
         Collection<Card> possibleMoves = NormalGameState.getPossibleMoves(hand, roundState, Clubs);
 
         Card[] expectedCards = new Card[]{card(Spades, Ace), card(Spades, King), card(Spades, Seven)};
-        Card[] actualCards = possibleMoves.toArray(new Card[possibleMoves.size()]);
+        Card[] actualCards = possibleMoves.toArray(new Card[0]);
 
         Assertions.assertArrayEquals(expectedCards, actualCards);
     }
@@ -112,8 +112,8 @@ public class NormalGameStateTest {
     public void testPossibleMovesWithEmptyRound() {
         Collection<Card> possibleMoves = NormalGameState.getPossibleMoves(hand, new RoundState(), Spades);
 
-        Card[] expectedCards = hand.getCards().toArray(new Card[hand.getCards().size()]);
-        Card[] actualCards = possibleMoves.toArray(new Card[possibleMoves.size()]);
+        Card[] expectedCards = hand.getCards().toArray(new Card[0]);
+        Card[] actualCards = possibleMoves.toArray(new Card[0]);
 
         Assertions.assertArrayEquals(expectedCards, actualCards);
     }

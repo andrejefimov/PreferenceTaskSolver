@@ -8,7 +8,7 @@ public class RoundState {
     private Suit firstMoveSuit;
 
     public RoundState() {
-        cards= new ArrayList<Card>(3);
+        cards= new ArrayList<>(3);
     }
 
     private RoundState(List<Card> cards) {
@@ -23,14 +23,14 @@ public class RoundState {
             throw new IllegalStateException("Round is already finished");
         }
 
-        ArrayList<Card> newCards = new ArrayList<Card>(cards);
+        ArrayList<Card> newCards = new ArrayList<>(cards);
         newCards.add(card);
 
         return new RoundState(newCards);
     }
 
     public boolean isEmpty() {
-        return cards.size() == 0;
+        return cards.isEmpty();
     }
 
     public Suit firstMoveSuit() {

@@ -8,10 +8,10 @@ public class Hand {
 
     public Hand(List<Card> cards) {
         this.cards = cards;
-        this.suitCards = new ArrayList<List<Card>>();
+        this.suitCards = new ArrayList<>();
 
         for (int i = 0; i < Suit.values().length; i++) {
-            this.suitCards.add(new ArrayList<Card>());
+            this.suitCards.add(new ArrayList<>());
         }
 
         for (Card card : cards) {
@@ -25,13 +25,13 @@ public class Hand {
     }
 
     public Hand removeCard(Card card) {
-        ArrayList<Card> newCards = new ArrayList<Card>(cards);
+        ArrayList<Card> newCards = new ArrayList<>(cards);
         if (!newCards.remove(card)) {
             throw new IllegalAccessError("Hand doesn't contain card");
         }
 
-        ArrayList<List<Card>> newSuitCards = new ArrayList<List<Card>>(suitCards);
-        List<Card> cardCollection = new ArrayList<Card>(getSuitCards(card.getSuit()));
+        ArrayList<List<Card>> newSuitCards = new ArrayList<>(suitCards);
+        List<Card> cardCollection = new ArrayList<>(getSuitCards(card.getSuit()));
         if (!cardCollection.remove(card)) {
             throw new IllegalAccessError("Suit cards doesn't contain card");
         }
@@ -47,7 +47,7 @@ public class Hand {
 
     public Collection<Card> getSuitCards(Suit suit) {
         if (suit == null) {
-            return new ArrayList<Card>();
+            return new ArrayList<>();
         }
 
         return suitCards.get(suit.getIndex());
