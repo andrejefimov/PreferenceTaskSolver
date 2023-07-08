@@ -14,7 +14,7 @@ import static pref.Suit.*;
 import static pref.Value.*;
 import static pref.Value.Queen;
 
-public class RealTasks {
+public class RealTasksTest {
     @Test
     public void task1() {
         Hand firstHand = new Hand(Arrays.asList(
