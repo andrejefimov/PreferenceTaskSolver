@@ -24,6 +24,6 @@ public class HandTest {
     public void equalsTest() {
         Hand hand1 = new Hand(Arrays.asList(card(Spades, Seven), card(Hearts, King)));
         Hand hand2 = new Hand(Arrays.asList(card(Spades, Seven), card(Hearts, Ace)));
-        Assertions.assertEquals(hand1.equals(hand2), false);
+        Assertions.assertNotEquals(hand1, hand2);
     }
 }
